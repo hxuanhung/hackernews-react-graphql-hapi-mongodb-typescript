@@ -1,0 +1,27 @@
+image: docker:latest
+variables:
+  DOCKER_DRIVER: overlay
+services:
+- docker:dind
+before_script:
+- docker info
+
+test:
+	state: test
+	script:
+	- apk --no-cache add nodejs=6.9.2-r1
+	- cd app
+	- npm install
+	- npm run test
+
+build:
+  stage: build
+	only:
+	- develop
+  script:
+  - apk --no-cache add nodejs=6.9.2-r1
+	- cd app
+  - npm install
+  - npm run docker:build
+  - docker login -u hxuanhung -p uE3X63kt30wjdsaeFdlNPkQI7dcv
+  - npm run docker:push

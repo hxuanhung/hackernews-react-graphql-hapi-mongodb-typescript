@@ -1,4 +1,8 @@
 image: docker:latest
+
+stages:
+  - test
+  - build
 variables:
   DOCKER_DRIVER: overlay
 services:

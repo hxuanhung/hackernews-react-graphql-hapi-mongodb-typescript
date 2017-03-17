@@ -7,20 +7,20 @@ before_script:
 - docker info
 
 test:
-	state: test
-	script:
-	- apk --no-cache add nodejs=6.9.2-r1
-	- cd app
-	- npm install
-	- npm run test
+  stage: test
+  script:
+  - apk --no-cache add nodejs=6.9.2-r1
+  - cd app
+  - npm install
+  - npm run test
 
 build:
   stage: build
-	only:
-	- develop
+  only:
+  - develop
   script:
   - apk --no-cache add nodejs=6.9.2-r1
-	- cd app
+  - cd app
   - npm install
   - npm run docker:build
   - docker login -u hxuanhung -p uE3X63kt30wjdsaeFdlNPkQI7dcv

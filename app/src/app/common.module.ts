@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { MaterialModule } from '@angular/material';
 
 export const IMPORTS: any[] = [
-	MaterialModule
+    MaterialModule
 ];
 
 export const EXPORTS: any[] = [
-	MaterialModule
+    MaterialModule
 ];
 
 @NgModule({
-	imports: IMPORTS,
-	exports: EXPORTS,
-	providers: [],
+    imports: IMPORTS,
+    exports: EXPORTS,
+    providers: [],
 })
 export class CommonModule { }

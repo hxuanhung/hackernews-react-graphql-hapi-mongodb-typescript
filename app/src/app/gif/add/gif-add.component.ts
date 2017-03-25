@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-	selector: 'gif-add',
-	templateUrl: 'gif-add.component.html'
+    selector: 'gif-add',
+    templateUrl: 'gif-add.component.html'
 })
 export class GifAddComponent implements OnInit {
-	constructor() { }
+    constructor() { }
 
-	ngOnInit() { }
+    ngOnInit() { }
 
-	addGif(_title, _url){
-		console.log(`Add Gif`, _title, _url);
-	}
+    addGif(_title, _url){
+        console.log(`Add Gif`, _title, _url);
+    }
 }

@@ -4,9 +4,9 @@ import { GifComponent } from './gif.component';
 import { GifAddComponent } from './add/gif-add.component';
 
 @NgModule({
-	imports: [CommonModule],
-	exports: [GifComponent, GifAddComponent],
-	declarations: [GifComponent, GifAddComponent],
-	providers: [],
+    imports: [CommonModule],
+    exports: [GifComponent, GifAddComponent],
+    declarations: [GifComponent, GifAddComponent],
+    providers: [],
 })
 export class GifModule { }

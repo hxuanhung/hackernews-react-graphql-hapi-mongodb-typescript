@@ -1,13 +1,13 @@
-import { MessageModel } from './Message.model';
+import { GifModel } from './Gif.model';
 
-export class Message {
-	getAllMessages() {
-		const res = MessageModel.find().exec();
-		return res ? res : []
+export class Gif {
+	getAllGifs() {
+		const res = GifModel.find().exec();
+		return res ? res : [];
 	}
 
-	getMessageById(id: string) {
-		return MessageModel.findById(id, (err, doc) => {
+	getGifById(id: string) {
+		return GifModel.findById(id, (err, doc) => {
 			console.log(err, doc);
 			if (err) {
 				console.log("Something wrong when get data!");
@@ -15,11 +15,11 @@ export class Message {
 			}
 
 			return doc;
-		})
+		});
 	}
 
 	create(text: string) {
-		return new MessageModel({ text: text }).save((err, doc) => {
+		return new GifModel({ text: text }).save((err, doc) => {
 			console.log(err, doc);
 			if (err) {
 				console.log("Something wrong when create data!");
@@ -31,23 +31,23 @@ export class Message {
 	}
 
 	modify(id: string, text: string) {
-		return MessageModel.findByIdAndUpdate(id, { text: text }, { new: true }, (err, doc) => {
+		return GifModel.findByIdAndUpdate(id, { text: text }, { new: true }, (err, doc) => {
 			if (err) {
 				console.log("Something wrong when updating data!");
 				return err;
 			}
 
 			return doc;
-		})
+		});
 	}
 
 	delete(id: string) {
-		return MessageModel.findByIdAndRemove(id, (err, doc) => {
+		return GifModel.findByIdAndRemove(id, (err, doc) => {
 			if (err) {
 				console.log("Something wrong when delete data!");
 				return err;
 			}
 			return 'Deleted';
-		})
+		});
 	}
 }

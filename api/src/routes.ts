@@ -1,4 +1,4 @@
-import { routes as messageRoutes } from './modules/message/routes';
+import { routes as gifRoutes } from './modules/gif/routes';
 
 
-export const ROUTES = [].concat(messageRoutes);
+export const ROUTES = [].concat(gifRoutes);

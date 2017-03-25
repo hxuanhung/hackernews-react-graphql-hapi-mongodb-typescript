@@ -24,6 +24,10 @@ import { AppState } from './app.service';
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         Emogii
       </a>
+      <a [routerLink]=" ['./add'] "
+        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+        Add Gif
+      </a>
       <a [routerLink]=" ['./about'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         About
@@ -37,7 +41,7 @@ import { AppState } from './app.service';
     <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
 
     <footer>
-      <span>"name" by <a [href]="url">@hxuanhung</a></span>
+      <span>{{name}} by <a [href]="url">@hxuanhung</a></span>
     </footer>
   `
 })

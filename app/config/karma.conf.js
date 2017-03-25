@@ -1,7 +1,12 @@
 /**
  * @author: @AngularClass
  */
-
+var webdriverConfig = {
+  hostname: process.env.SELENIUM_GRID_ADDR || 'localhost',
+  port: 4444
+  // user: 'USERNAME',
+  // pwd: 'APIKEY'
+};
 module.exports = function (config) {
   var testWebpackConfig = require('./webpack.test.js')({ env: 'test' });
 
@@ -100,14 +105,29 @@ module.exports = function (config) {
      * available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
      */
     browsers: [
-      'PhantomJS'
+      'ChromeGrid'
     ],
+		customLaunchers: {
+      ChromeGrid: {
+        base: 'WebDriver',
+        config: webdriverConfig,
+        browserName: 'chrome',
+        //platform: 'LINUX',
+        //maxInstances: 1,
+        //acceptSslCerts: true,
+        // version: '53',
+        name: 'Karma',
+        pseudoActivityInterval: 20000
+      }
+    },
     /*
      * Continuous Integration mode
      * if true, Karma captures browsers, runs the tests and exits
      */
     singleRun: true
   };
-
+	if (process.env.KARMA_HOSTNAME) {
+    configuration.hostname = process.env.KARMA_HOSTNAME;
+  }
   config.set(configuration);
 };

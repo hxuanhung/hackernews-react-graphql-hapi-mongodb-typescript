@@ -1,23 +1,23 @@
 version: '3'
 services:
   mongo:
-    image: mongo:3.2
+    image: mongo:3.4.2
     volumes:
       - mongo-data:/data/db
     expose:
       - "27017"
-  lbapp:
-    image: dockercloud/haproxy
-    links:
-      - app
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    ports:
-      - "8000:8080"
+  # lbapp:
+  #   image: dockercloud/haproxy
+  #   links:
+  #     - app
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   ports:
+  #     - "8080:8080"
   app:
-    image: hxuanhung/message-app
-    expose:
-      - "8080"
+    image: hxuanhung/emogii-api
+    ports:
+      - "8080:3001"
     links:
       - mongo
     depends_on:

@@ -4,12 +4,7 @@ import executableSchema from './schema';
 import * as mongoose from 'mongoose';
 import { ROUTES } from './routes';
 
-const serverConfig: any = {};
-serverConfig.connections = {
-    routes: { cors: true }
-    // routes: { cors: { origin: ['*'] } }
-};
-const server: hapi.Server = new hapi.Server(serverConfig);
+const server: hapi.Server = new hapi.Server();
 
 server.connection({
     port: 3001,

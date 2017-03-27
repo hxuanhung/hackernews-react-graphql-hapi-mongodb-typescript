@@ -38,11 +38,6 @@ import { AppState } from './app.service';
       <router-outlet></router-outlet>
     </main>
 
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-
-    <footer>
-      <span>{{name}} by <a [href]="url">@hxuanhung</a></span>
-    </footer>
   `
 })
 export class AppComponent implements OnInit {

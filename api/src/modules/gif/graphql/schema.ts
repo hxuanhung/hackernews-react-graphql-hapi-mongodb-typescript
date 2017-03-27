@@ -4,7 +4,8 @@ const gif = new Gif();
 export const schema = [`
 type Gif {
 	_id: String
-	text: String!
+	title: String!
+	url: String!
 }
 
 type Query {
@@ -14,6 +15,13 @@ type Query {
 
 	getAll: [Gif]
 }
+
+type Mutation {
+	addGif(
+		title: String!
+		url: String!
+	): Gif
+}
 `
 ];
 
@@ -22,8 +30,14 @@ export const resolvers = {
 		getOne(root, { _id }) {
 			return gif.getGifById(_id);
 		},
-		getAll(root, {} ) {
+		getAll(root, { }) {
 			return gif.getAllGifs();
 		},
 	},
+	Mutation: {
+		addGif(root, { title, url }) {
+			return gif.create(title, url);
+
+		}
+	}
 };

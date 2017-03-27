@@ -18,8 +18,8 @@ export class Gif {
 		});
 	}
 
-	create(text: string) {
-		return new GifModel({ text: text }).save((err, doc) => {
+	create(title: string, url: string) {
+		return new GifModel({ title: title, url: url }).save((err, doc) => {
 			console.log(err, doc);
 			if (err) {
 				console.log("Something wrong when create data!");

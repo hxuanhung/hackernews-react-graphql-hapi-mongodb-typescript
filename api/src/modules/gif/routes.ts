@@ -15,10 +15,11 @@ const handlers = {
 	},
 
 	post: (request: hapi.Request, reply: hapi.IReply) => {
-		//curl http://localhost:3000/gif -X POST -H 'Content-Type: application/json' -d '{"text":"rainbow dash"}'
+		//curl http://localhost:3000/gif -X POST -H 'Content-Type: application/json' -d '{"title":"rainbow dash", "url": "https://media.giphy.com/media/3oKIPwAaNhSKv0cfLy/giphy.gif"}'
 		try {
-			const value = request.payload.text;
-			reply(new Gif().create(value));
+			const title = request.payload.title;
+			const url = request.payload.url;
+			reply(new Gif().create(title, url));
 		} catch (e) {
 			reply({
 				"statusCode": 404,

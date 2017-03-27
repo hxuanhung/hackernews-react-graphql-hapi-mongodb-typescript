@@ -1,10 +1,14 @@
 import * as mongoose from 'mongoose';
 
 const gifSchema = new mongoose.Schema({
-	text: {
+	title: {
 		type: String,
 		require: true
-	}
+	},
+	url: {
+		type: String,
+		require: true
+	},
 });
 
 export const GifModel = mongoose.model('Gif', gifSchema);

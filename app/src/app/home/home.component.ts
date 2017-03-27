@@ -13,7 +13,8 @@ const GetAllGif = gql`
   query getAllGif {
       getAll{
            _id
-        text
+        title
+        url
   }
 }
 `;
@@ -29,6 +30,7 @@ const GetAllGif = gql`
 export class HomeComponent implements OnInit {
     // Set our default values
     public localState = { value: '' };
+    gifs: any[];
     // TypeScript public modifiers
     constructor(
         public appState: AppState,
@@ -41,9 +43,12 @@ export class HomeComponent implements OnInit {
         // this.title.getData().subscribe(data => this.data = data);
         this.apollo.watchQuery({
             query: GetAllGif
-        }).subscribe(({ data }) => {
-            console.log('Get data', data);
-        });
+        })
+            .map(data => data.data)
+            .subscribe(data => {
+                console.log('Get data', data.getAll);
+                this.gifs = data.getAll;
+            });
     }
 
     public submitState(value: string) {

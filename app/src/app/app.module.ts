@@ -44,7 +44,7 @@ const APP_PROVIDERS = [
 
 const client = new ApolloClient({
     networkInterface: createNetworkInterface({
-        uri: 'http://localhost:3001/graphql'
+        uri: 'http://localhost:8765/graphql'
     }),
 });
 

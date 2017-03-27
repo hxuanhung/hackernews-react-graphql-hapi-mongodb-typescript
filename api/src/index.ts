@@ -7,7 +7,7 @@ import { ROUTES } from './routes';
 const server: hapi.Server = new hapi.Server();
 
 server.connection({
-    port: 3001,
+    port: 8765,
     routes: { cors: true }
 });
 
@@ -29,10 +29,7 @@ server.register({
     register: graphqlHapi,
     options: {
         path: '/graphql',
-        graphqlOptions: { schema: executableSchema },
-        routes: {
-            cors: true,
-        },
+        graphqlOptions: { schema: executableSchema }
     },
 });
 
@@ -50,5 +47,5 @@ server.start((err: any) => {
     if (err) {
         throw err;
     }
-    console.log("server running at 3001");
+    console.log("server running at 8765");
 });

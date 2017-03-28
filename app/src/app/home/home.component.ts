@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
 				fetchPolicy: "network-only"
 			}
 		)
-			.map(data => data.data)
+			.map(data => <any>data.data)
 			.subscribe(data => {
 				console.log('Get data', data.getAll);
 				this.gifs = data.getAll;

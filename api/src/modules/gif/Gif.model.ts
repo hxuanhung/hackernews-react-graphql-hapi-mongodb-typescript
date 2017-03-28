@@ -9,7 +9,7 @@ const gifSchema = new mongoose.Schema({
 		type: String,
 		require: true
 	},
-});
+}, { versionKey: false });
 
 export const GifModel = mongoose.model('Gif', gifSchema);
 

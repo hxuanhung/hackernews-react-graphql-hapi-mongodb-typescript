@@ -6,7 +6,7 @@ services:
       - mongo-data:/db
     expose:
       - "27017"
-  app:
+  api:
     build: .
     command: npm run server:dev
     volumes:

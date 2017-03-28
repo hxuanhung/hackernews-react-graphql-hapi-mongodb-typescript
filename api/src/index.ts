@@ -12,7 +12,7 @@ server.connection({
 });
 
 
-const db = mongoose.connect(`mongodb://localhost/test_db`);
+const db = mongoose.connect(`mongodb://mongo/test_db`);
 
 server.route({
     method: "GET",

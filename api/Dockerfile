@@ -1,11 +1,12 @@
-FROM node:7.6.0
-
-COPY . /app
+FROM mhart/alpine-node:7
 
 WORKDIR /app
 
+RUN apk --no-cache add rsync
+
+COPY package.json /app/package.json
 RUN npm install
 
-EXPOSE 3000
+COPY . /app
 
-CMD ["npm","run", "server:dev"]
+CMD ["npm","start"]

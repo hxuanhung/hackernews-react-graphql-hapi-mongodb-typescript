@@ -1,0 +1,25 @@
+version: '3'
+services:
+  mongo:
+    image: mongo:3.4.2
+    volumes:
+      - mongo-data:/db
+    expose:
+      - "27017"
+  api:
+    image: hxuanhung/emogii-api:latest
+    command: npm run server:dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+            # use a data volume to store all the node_modules, as data volumes copy in the data from the built docker image before the worker directory is mounted.
+    ports:
+      - "8765:8765"
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URL=mongodb://mongo/emogii-v2
+volumes:
+  mongo-data:

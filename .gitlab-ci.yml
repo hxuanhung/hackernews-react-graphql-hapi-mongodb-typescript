@@ -31,3 +31,6 @@ build:
   - npm run docker:build
   - docker login -u hxuanhung -p uE3X63kt30wjdsaeFdlNPkQI7dcv
   - npm run docker:push
+  - cd ../api
+  - npm run docker:build
+  - npm run docker:push

@@ -28,9 +28,9 @@ build:
   - apk --no-cache add nodejs=6.9.2-r1
   - cd app
   - npm install
-  - npm run docker:build
+  - npm run docker:build:prod
   - docker login -u hxuanhung -p uE3X63kt30wjdsaeFdlNPkQI7dcv
-  - npm run docker:push
+  - npm run docker:push:prod
   - cd ../api
-  - npm run docker:build
-  - npm run docker:push
+  - npm run docker:build:prod
+  - npm run docker:push:prod

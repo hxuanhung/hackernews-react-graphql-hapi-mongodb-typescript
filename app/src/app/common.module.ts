@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MaterialModule } from '@angular/material';
 import { ApolloClient, createNetworkInterface } from 'apollo-client';
-let hostname = 'localhost';
-if (process.env.KARMA_HOSTNAME) {
-	hostname = process.env.KARMA_HOSTNAME;
-}
+let hostname = '51.15.130.177';
 
 const client = new ApolloClient({
 	networkInterface: createNetworkInterface({

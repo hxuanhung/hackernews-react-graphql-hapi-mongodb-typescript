@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MaterialModule } from '@angular/material';
 import { ApolloClient, createNetworkInterface } from 'apollo-client';
+import { FormsModule } from '@angular/forms';
 let hostname = '51.15.130.177';
 
 const client = new ApolloClient({
@@ -14,11 +15,13 @@ export function provideClient(): ApolloClient {
 }
 
 export const IMPORTS: any[] = [
-	MaterialModule
+	MaterialModule,
+	FormsModule
 ];
 
 export const EXPORTS: any[] = [
-	MaterialModule
+	MaterialModule,
+	FormsModule
 ];
 
 @NgModule({

@@ -15,6 +15,7 @@ services:
             # use a data volume to store all the node_modules, as data volumes copy in the data from the built docker image before the worker directory is mounted.
     ports:
       - "8765:8765"
+      - "5858:5858"
     links:
       - mongo
     depends_on:

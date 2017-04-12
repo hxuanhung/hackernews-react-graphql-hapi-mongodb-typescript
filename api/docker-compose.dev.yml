@@ -21,6 +21,6 @@ services:
     depends_on:
       - mongo
     environment:
-      - MONGO_URL=mongodb://mongo/emogii-v2
+      - MONGO_HOST=mongo
 volumes:
   mongo-data:

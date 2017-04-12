@@ -11,8 +11,8 @@ server.connection({
     routes: { cors: true }
 });
 
-
-const db = mongoose.connect(`mongodb://mongo/test_db`);
+const MONGO_HOST = process.env.MONGO_HOST || 'localhost';
+const db = mongoose.connect(`mongodb://${MONGO_HOST}/emogii-v2`);
 
 server.route({
     method: "GET",

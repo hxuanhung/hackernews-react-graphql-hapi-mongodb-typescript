@@ -10,6 +10,9 @@
     "no-console": [false],
     "object-literal-sort-keys": false,
     "no-namespace": false,
-    "no-empty-interface": false
+    "no-empty-interface": false,
+    "ordered-imports": [
+      false
+    ]
   }
 }

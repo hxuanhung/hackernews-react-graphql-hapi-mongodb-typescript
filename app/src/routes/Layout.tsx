@@ -29,6 +29,7 @@ export class Layout extends React.Component<ILayoutProps, any> {
                 href='/app'
               />
               <NavbarLink title='Add new Url' href='/add' />
+              <NavbarLink title='Feed' href='/feed' />
             </ul>
           </div>
         </nav>

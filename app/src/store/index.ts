@@ -1,15 +1,15 @@
-import { createStore, applyMiddleware, Store } from 'redux';
+import { applyMiddleware, createStore, Store } from 'redux';
 import { logger } from '../middleware';
-import rootReducer, { RootState } from '../reducers';
+import rootReducer, { IRootState } from '../reducers';
 
-export function configureStore(initialState?: RootState): Store<RootState> {
+export function configureStore(initialState?: IRootState): Store<IRootState> {
   const create = window.devToolsExtension
     ? window.devToolsExtension()(createStore)
     : createStore;
 
   const createStoreWithMiddleware = applyMiddleware(logger)(create);
 
-  const store = createStoreWithMiddleware(rootReducer, initialState) as Store<RootState>;
+  const store = createStoreWithMiddleware(rootReducer, initialState) as Store<IRootState>;
 
   if (module.hot) {
     module.hot.accept('../reducers', () => {

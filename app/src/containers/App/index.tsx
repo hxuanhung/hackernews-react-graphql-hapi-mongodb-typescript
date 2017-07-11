@@ -4,7 +4,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import * as TodoActions from '../../actions/todos';
 import { Header, MainSection } from '../../components';
-import { RootState } from '../../reducers';
+import { IRootState } from '../../reducers';
 import * as style from './style.css';
 
 export interface IAppProps extends RouteComponentProps<void> {
@@ -26,7 +26,7 @@ export class App extends React.Component<IAppProps, any> {
   }
 }
 
-function mapStateToProps(state: RootState) {
+function mapStateToProps(state: IRootState) {
   return {
     todos: state.todos,
   };

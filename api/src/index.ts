@@ -5,10 +5,9 @@ import * as mongoose from "mongoose";
 import { ROUTES } from "./routes";
 import {
   GITHUB_CLIENT_ID,
-  GITHUBR_CLIENT_SECRET
+  GITHUB_CLIENT_SECRET
 } from "./modules/auth/githubkeys";
 const server: hapi.Server = new hapi.Server();
-
 server.connection({
   port: 8765,
   routes: { cors: true }
@@ -46,8 +45,8 @@ server.register(require("bell"), function(err) {
   server.auth.strategy("github", "bell", {
     provider: "github",
     password: "cookie_encryption_password_secure",
-    clientId: "abb0e84f334e7f850a2c",
-    clientSecret: "20da4ee476f6ec552723b7cc809a4e74180e4af9",
+    clientId: GITHUB_CLIENT_ID,
+    clientSecret: GITHUB_CLIENT_SECRET,
     isSecure: false // Terrible idea but required if not using HTTPS especially if developing locally
   });
   server.route({

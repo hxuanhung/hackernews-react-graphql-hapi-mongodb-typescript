@@ -19,7 +19,8 @@ module.exports = {
       'react-dom',
       'react-redux',
       'react-router-dom',
-      'redux'
+      'redux',
+      'whatwg-fetch'
     ]
   },
   output: {

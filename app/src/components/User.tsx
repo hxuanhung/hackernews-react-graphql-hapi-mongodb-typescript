@@ -1,50 +1,63 @@
 import * as React from 'react';
 import { graphql } from 'react-apollo';
 import { connect } from 'react-redux';
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps, Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import * as toastr from 'toastr';
 import { USER_QUERY } from '../graphql/queries/user.graphql';
 import * as style from './App/style.css';
-import { Link } from 'react-router';
 import { gql } from 'react-apollo';
-export interface IUserProps {
-  loading: boolean;
-  currentUser: {
-    login: string;
-  };
+import * as authActions from '../actions/auth.actions';
+import { IRootState } from '../reducers';
+import { IAuthReducer } from '../reducers/auth.reducer';
+interface IUserProps {
+  auth: IAuthReducer;
+  actions: typeof authActions;
 }
-class User extends React.Component<IUserProps, any> {
-  public render() {
-    const { loading, currentUser } = this.state;
 
-    if (loading) {
-      return <p className='navbar-text navbar-right'>Loading...</p>;
-    } else if (currentUser) {
+@connect(mapStateToProps, mapDispatchToProps)
+export class User extends React.Component<IUserProps, any> {
+  constructor() {
+    super();
+  }
+  public login = () => {
+    this.props.actions.login();
+  }
+  public logout = () => {
+    this.props.actions.logout();
+  }
+  public render() {
+    const { actions, auth } = this.props;
+
+    if (auth.currentUser) {
       return (
         <span>
           <p className='navbar-text navbar-right'>
-            {currentUser.login}
+            {auth.currentUser.login}
             &nbsp;
-            <a href='/logout'>Log out</a>
+            <button onClick={this.logout}>Logout</button>
           </p>
-          <Link
-            type='submit'
-            className='btn navbar-btn navbar-right btn-success'
-            to='/submit'
-          >
-            <span className='glyphicon glyphicon-plus' aria-hidden='true' />
-            &nbsp; Submit
-          </Link>
         </span>
       );
+    } else {
+      return (
+        <p className='navbar-text navbar-right'>
+          <button onClick={this.login}>Login with Github</button>
+        </p>
+      );
     }
-    return (
-      <p className='navbar-text navbar-right'>
-        <a href='/login/github'>Log in with GitHub</a>
-      </p>
-    );
   }
+}
+function mapStateToProps(state: IRootState) {
+  return {
+    auth: state.auth,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(authActions as any, dispatch),
+  };
 }
 
 // const withData = graphql(USER_QUERY, {
@@ -56,21 +69,5 @@ class User extends React.Component<IUserProps, any> {
 //   }),
 // });
 // export default withData(User);
-const PROFILE_QUERY = gql`
-  query CurrentUserForLayout {
-    currentUser {
-      login
-      avatar_url
-    }
-  }
-`;
 
-// export default graphql(PROFILE_QUERY, {
-//   options: {
-//     fetchPolicy: 'cache-and-network',
-//   },
-//   props: ({ data: { loading, currentUser } }) => ({
-//     loading,
-//     currentUser,
-//   }),
-// })(User);
+// export default User;

@@ -15,10 +15,11 @@
 		"server:dev": "npm run build:dev && npm run dev:watch",
 		"start": "npm run build:dev && npm run dev",
 		"watch": "tsc --watch"
-
 	},
 	"dependencies": {
+		"bell": "^8.7.0",
 		"concurrently": "^3.3.0",
+		"dotenv": "^4.0.0",
 		"graphql": "^0.9.1",
 		"graphql-server-hapi": "^0.6.0",
 		"graphql-subscriptions": "^0.3.0",

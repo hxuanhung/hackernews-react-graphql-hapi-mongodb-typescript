@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { NavbarLink } from '../components/NavbarLink/NavbarLink';
-
+// import User from '../components/User';
 export interface ILayoutProps extends RouteComponentProps<void> {
   params: {
     type: string;
@@ -24,16 +24,16 @@ export class Layout extends React.Component<ILayoutProps, any> {
             </div>
 
             <ul className='nav navbar-nav'>
-              <NavbarLink
-                title='App'
-                href='/app'
-              />
+              <NavbarLink title='App' href='/app' />
               <NavbarLink title='Add new Url' href='/add' />
               <NavbarLink title='Feed' href='/feed' />
             </ul>
+            {/* <User /> */}
           </div>
         </nav>
-        {children}
+        <div>
+          {children}
+        </div>
       </div>
     );
   }

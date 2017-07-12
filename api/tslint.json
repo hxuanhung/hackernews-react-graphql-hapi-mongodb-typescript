@@ -1,5 +1,13 @@
 {
-  "extends": "../tslint.json",
+  "extends": [
+    "tslint:latest",
+    "tslint-eslint-rules",
+    "tslint-config-prettier"
+  ],
   "rules": {
+    "semicolon": false,
+    "ordered-imports": false,
+    "interface-name": false,
+    "member-access": false
   }
 }

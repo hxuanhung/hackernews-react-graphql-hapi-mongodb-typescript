@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import * as toastr from 'toastr';
-import { ADD_NEW_URL_MUTATION } from '../../graphql/addNewUrl.graphql';
+import { ADD_NEW_URL_MUTATION } from '../graphql/addNewUrl.graphql';
 import * as style from './App/style.css';
 export interface INewUrlPageProps {
   add: (repoFullName: string) => Promise<any>;

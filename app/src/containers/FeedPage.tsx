@@ -3,10 +3,10 @@ import { graphql } from 'react-apollo';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
-import {Feed, IFeedProps} from '../../components/Feed/Feed';
-import {FeedEntry} from '../../components/Feed/FeedEntry';
-import { ADD_NEW_URL_MUTATION } from '../../graphql/addNewUrl.graphql';
-import { FEED_QUERY } from '../../graphql/feed.graphql';
+import {Feed, IFeedProps} from '../components/Feed/Feed';
+import {FeedEntry} from '../components/Feed/FeedEntry';
+import { ADD_NEW_URL_MUTATION } from '../graphql/addNewUrl.graphql';
+import { FEED_QUERY } from '../graphql/feed.graphql';
 import * as style from './App/style.css';
 export interface IFeedPageProps {
   loading: boolean;

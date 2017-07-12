@@ -50,15 +50,15 @@ server.register(require("bell"), function(err) {
     isSecure: false // Terrible idea but required if not using HTTPS especially if developing locally
   });
   server.route({
-    method: ["GET", "POST"], // Must handle both GET and POST
+    method: ["GET"], // Must handle both GET and POST
     path: "/login/github", // The callback endpoint registered with the provider
     config: {
       auth: "github",
-      handler: (request, reply) => { }
+      handler: (request, reply) => {}
     }
   });
   server.route({
-    method: ["GET", "POST"], // Must handle both GET and POST
+    method: ["GET"], // Must handle both GET and POST
     path: "/login/github/callback", // The callback endpoint registered with the provider
     config: {
       auth: "github",
@@ -68,29 +68,24 @@ server.register(require("bell"), function(err) {
             "Authentication failed due to: " + request.auth.error.message
           );
         }
-
+        console.log(`login/github/callback`, request.auth);
         return reply.redirect("/");
       }
     }
   });
   server.route({
-    method: ["GET", "POST"], // Must handle both GET and POST
+    method: ["GET"], // Must handle both GET and POST
     path: "/logout", // The callback endpoint registered with the provider
     config: {
       auth: "github",
       handler: function(request, reply) {
-        if (!request.auth.isAuthenticated) {
-          return reply(
-            "Authentication failed due to: " + request.auth.error.message
-          );
-        }
-
         return reply.redirect("/");
       }
     }
   });
+  server.route(ROUTES);
 });
-server.route(ROUTES);
+
 
 server.start((err: any) => {
   if (err) {

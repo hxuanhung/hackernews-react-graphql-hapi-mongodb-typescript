@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-const gifSchema = new mongoose.Schema({
+const linkSchema = new mongoose.Schema({
 	title: {
 		type: String,
 		require: true
@@ -9,7 +9,11 @@ const gifSchema = new mongoose.Schema({
 		type: String,
 		require: true
 	},
+	description: {
+		type: String,
+		required: true
+	},
 }, { versionKey: false });
 
-export const GifModel = mongoose.model('Gif', gifSchema);
+export const LinkModel = mongoose.model('Link', linkSchema);
 

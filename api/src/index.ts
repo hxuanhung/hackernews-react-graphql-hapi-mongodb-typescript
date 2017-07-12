@@ -1,8 +1,7 @@
 import * as hapi from "hapi";
 import { graphqlHapi, graphiqlHapi } from "graphql-server-hapi";
-import executableSchema from "./schema";
+import executableSchema from "./modules/graphql";
 import * as mongoose from "mongoose";
-import { ROUTES } from "./routes";
 import {
   GITHUB_CLIENT_ID,
   GITHUB_CLIENT_SECRET
@@ -85,7 +84,6 @@ server.register(require("bell"), function(err) {
       }
     }
   });
-  server.route(ROUTES);
 });
 
 

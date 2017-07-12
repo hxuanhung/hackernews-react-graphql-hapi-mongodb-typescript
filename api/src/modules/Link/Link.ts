@@ -1,13 +1,13 @@
-import { GifModel } from './Gif.model';
+import { LinkModel } from './Link.model';
 
-export class Gif {
-	getAllGifs() {
-		const res = GifModel.find().exec();
+export class Link {
+	getAllEntries() {
+		const res = LinkModel.find().exec();
 		return res ? res : [];
 	}
 
-	getGifById(id: string) {
-		return GifModel.findById(id, (err, doc) => {
+	getEntryById(id: string) {
+		return LinkModel.findById(id, (err, doc) => {
 			console.log(err, doc);
 			if (err) {
 				console.log("Something wrong when get data!");
@@ -18,8 +18,8 @@ export class Gif {
 		});
 	}
 
-	create(title: string, url: string) {
-		return new GifModel({ title: title, url: url }).save((err, doc) => {
+	create(description: string, url: string) {
+		return new LinkModel({ description, url }).save((err, doc) => {
 			console.log(err, doc);
 			if (err) {
 				console.log("Something wrong when create data!");
@@ -31,7 +31,7 @@ export class Gif {
 	}
 
 	modify(id: string, text: string) {
-		return GifModel.findByIdAndUpdate(id, { text: text }, { new: true }, (err, doc) => {
+		return LinkModel.findByIdAndUpdate(id, { text: text }, { new: true }, (err, doc) => {
 			if (err) {
 				console.log("Something wrong when updating data!");
 				return err;
@@ -42,7 +42,7 @@ export class Gif {
 	}
 
 	delete(id: string) {
-		return GifModel.findByIdAndRemove(id, (err, doc) => {
+		return LinkModel.findByIdAndRemove(id, (err, doc) => {
 			if (err) {
 				console.log("Something wrong when delete data!");
 				return err;

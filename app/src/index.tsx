@@ -11,6 +11,8 @@ import { Layout } from './routes/Layout';
 import { configureStore } from './store';
 
 // Styles
+import './styles/App.css';
+import './styles/index.css';
 import '../node_modules/toastr/build/toastr.min.css';
 const store = configureStore();
 const history = createBrowserHistory();
@@ -18,13 +20,17 @@ const history = createBrowserHistory();
 ReactDOM.render(
   <ApolloProvider client={client}>
     <Provider store={store}>
-      <Router history={history}>
-        <div>
-          <Route path='/' component={Layout} />
-          <Route path='/add' component={NewUrlPage} />
-            <Route path='/feed' component={FeedPage} />
+      <div className='center w85'>
+        <div className='ph3 pv1 background-gray'>
+          <Router history={history}>
+            <Switch>
+              <Route path='/' component={Layout} />
+              <Route path='/add' component={NewUrlPage} />
+              <Route path='/feed' component={FeedPage} />
+            </Switch>
+          </Router>
         </div>
-      </Router>
+      </div>
     </Provider>
   </ApolloProvider>,
   document.getElementById('root'),

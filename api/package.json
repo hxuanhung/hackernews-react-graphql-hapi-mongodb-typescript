@@ -24,11 +24,12 @@
 		"graphql-subscriptions": "^0.3.0",
 		"graphql-tools": "^0.10.0",
 		"hapi": "^16.1.0",
-		"hapi-auth-jwt": "^4.0.0",
+		"hapi-auth-jwt2": "^7.3.0",
 		"jsonwebtoken": "^7.4.1",
 		"mongoose": "^4.8.4",
 		"nodemon": "^1.11.0",
-		"typescript": "^2.2.1"
+		"typescript": "^2.2.1",
+		"url": "^0.11.0"
 	},
 	"devDependencies": {
 		"@types/cookies": "^0.6.0",

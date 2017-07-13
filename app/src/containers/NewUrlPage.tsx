@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { graphql } from 'react-apollo';
 import { connect } from 'react-redux';
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps, browserHistory } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import * as toastr from 'toastr';
 import { ADD_NEW_URL_MUTATION } from '../graphql/addNewUrl.graphql';
@@ -9,7 +9,6 @@ import * as style from './App/style.css';
 export interface INewUrlPageProps {
   add: (url: string, descpription: string) => Promise<any>;
 }
-// TODO: rename url to url
 class NewUrlPage extends React.Component<INewUrlPageProps, any> {
   constructor() {
     super();
@@ -27,7 +26,7 @@ class NewUrlPage extends React.Component<INewUrlPageProps, any> {
       console.log(`add page Url`, res);
       if (!res.errors) {
         console.log(`no error`);
-        // browserHistory.push('/feed/new');
+        browserHistory.push('/feed/new');
       } else {
         this.setState({ errors: res.errors });
       }

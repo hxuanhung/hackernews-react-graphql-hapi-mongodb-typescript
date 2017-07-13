@@ -36,15 +36,15 @@ fragment RepoInfo on Entry {
 }
 `;
 export const FEED_QUERY = gql`
-query Feed($type: FeedType!, $offset: Int, $limit: Int) {
-  # Eventually move this into a no fetch query right on the entry
-  # since; we; literally; just; need; this; info; to; determine; whether; to;
-  # show; upvote/downvote; buttons;
- currentUser {
-    login
-  }
- feed(type: $type, offset: $offset, limit: $limit) {
-    ...FeedEntry
+query AllLinksQuery($first: Int, $skip: Int) {
+  getAllLinks(first: $first, skip: $skip) {
+    id
+    url
+    description
+    postedBy {
+      id
+      name
+    }
   }
 }
 `;

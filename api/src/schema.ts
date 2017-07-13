@@ -10,7 +10,8 @@ type User {
   type Link {
     id: ID!
     url: String!
-    description: String!
+		description: String!
+		postedBy: User
   }
   type Mutation {
     addLink(url: String!, description: String!): Link

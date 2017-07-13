@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { FeedEntry, IFeedEntryProps } from './FeedEntry';
 export interface IFeedProps {
-  entries: any;
+  entries: any[];
   loggedIn: boolean;
 }
 
@@ -19,9 +19,9 @@ export class Feed extends React.Component<IFeedProps, any> {
           (entry) =>
             entry
               ? <FeedEntry
-                  key={entry.repository.full_name}
-                  entry={entry}
-                  loggedIn={true}
+                  key={entry.url}
+                  link={entry}
+                  loggedIn={loggedIn}
               />
               : null,
         )}

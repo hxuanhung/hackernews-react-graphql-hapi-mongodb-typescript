@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Route, Router, Switch } from 'react-router-dom';
 import { App } from './containers/App';
-// import FeedPage from './containers/FeedPage';
+import FeedPage from './containers/FeedPage';
 import NewUrlPage from './containers/NewUrlPage';
 import { client } from './graphql/config';
 import { Layout } from './routes/Layout';
@@ -24,7 +24,7 @@ ReactDOM.render(
           <Route path='/' component={Layout} />
           <Route path='/app' component={App} />
           <Route path='/add' component={NewUrlPage} />
-          {/* <Route path='/feed' component={FeedPage} /> */}
+            <Route path='/feed' component={FeedPage} />
         </div>
       </Router>
     </Provider>

@@ -13,6 +13,15 @@
     "no-empty-interface": false,
     "ordered-imports": [
       false
+    ],
+    "align": [
+      true, "parameters", "statements"
+    ],
+    "member-ordering": [
+      false
+    ],
+    "member-access": [
+      false
     ]
   }
 }

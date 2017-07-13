@@ -1,7 +1,7 @@
 import { ApolloClient, createNetworkInterface } from 'react-apollo';
-
+import { APP_AUTH_TOKEN } from '../constants/constants';
 const networkInterface = createNetworkInterface({
-  uri: 'http://localhost:3010/graphql',
+  uri: 'http://localhost:8765/graphql',
 });
 networkInterface.use([
   {
@@ -10,8 +10,8 @@ networkInterface.use([
         req.options.headers = {}; // Create the header object if needed.
       }
       // get the authentication token from local storage if it exists
-      // const token = localStorage.getItem(GITHUB_ACCESS_TOKEN);
-      // req.options.headers.authorization = token ? `Bearer ${token}` : null;
+      const token = localStorage.getItem(APP_AUTH_TOKEN);
+      req.options.headers.authorization = token ? `Bearer ${token}` : null;
       next();
     },
   },

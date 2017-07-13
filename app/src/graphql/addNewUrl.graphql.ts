@@ -1,16 +1,8 @@
 import { gql } from 'react-apollo';
 export const ADD_NEW_URL_MUTATION = gql`
-mutation submitRepository($repoFullName: String!) {
-  submitRepository(repoFullName: $repoFullName) {
-    createdAt
+mutation addLink($url: String!, $description: String!) {
+  addLink(url: $url, description: $description) {
+    id
   }
 }
 `;
-// TODO: use this
-// export const ADD_NEW_URL_MUTATION = gql`
-//   mutation addNewUrl($pageUrl: String!) {
-//     addNewUrl(pageUrl: $pageUrl) {
-//       createdAt
-//     }
-//   }
-// `;

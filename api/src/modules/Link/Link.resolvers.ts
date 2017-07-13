@@ -1,12 +1,14 @@
 import { Link } from './Link';
-const link = new Link();
 
 export const resolvers = {
   Query: {
 	getAllLinks(root, { }) {
-		return link.getAllLinks();
+		return Link.getAllLinks();
 	},
   },
   Mutation: {
+	addLink: async (root, data) => {
+		return await Link.create(data);
+	}
   }
 };

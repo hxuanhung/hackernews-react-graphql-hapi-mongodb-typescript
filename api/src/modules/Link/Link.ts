@@ -1,20 +1,12 @@
 import { LinkModel } from './Link.model';
 
 export class Link {
-  getAllLinks() {
+  static getAllLinks() {
     const res = LinkModel.find().exec();
     return res ? res : [];
   }
-  create(name: string, email: string, password: string) {
-    return new LinkModel({ name, email, password }).save((err, doc) => {
-      console.log(err, doc);
-      if (err) {
-        console.log('Something wrong when create data!');
-        return err;
-      }
-
-      return doc;
-    });
+  static create(data: { url: string; description: string }) {
+    return new LinkModel(data).save();
   }
 
   modify(id: string, text: string) {

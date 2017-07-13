@@ -7,9 +7,9 @@ import * as toastr from 'toastr';
 import { ADD_NEW_URL_MUTATION } from '../graphql/addNewUrl.graphql';
 import * as style from './App/style.css';
 export interface INewUrlPageProps {
-  add: (repoFullName: string) => Promise<any>;
+  add: (url: string, descpription: string) => Promise<any>;
 }
-// TODO: rename repoFullName to repoFullName
+// TODO: rename url to url
 class NewUrlPage extends React.Component<INewUrlPageProps, any> {
   constructor() {
     super();
@@ -20,10 +20,10 @@ class NewUrlPage extends React.Component<INewUrlPageProps, any> {
   public addUrl(event) {
     event.preventDefault();
     const { add } = this.props;
-    const repoFullName = event.target.repoFullName.value;
-    console.log(`add url`, repoFullName);
+    const url = event.target.url.value;
+    const descpription = 'repoFullName';
 
-    return add(repoFullName).then((res) => {
+    return add(url, descpription).then((res) => {
       console.log(`add page Url`, res);
       if (!res.errors) {
         console.log(`no error`);
@@ -44,13 +44,13 @@ class NewUrlPage extends React.Component<INewUrlPageProps, any> {
 
         <form onSubmit={this.addUrl}>
           <div className='form-group'>
-            <label htmlFor='repoFullName'>Page Url</label>
+            <label htmlFor='url'>Page Url</label>
 
             <input
               type='text'
               className='form-control'
-              id='repoFullName'
-              name='repoFullName'
+              id='url'
+              name='url'
               placeholder='Enter a url here'
             />
           </div>
@@ -71,9 +71,9 @@ class NewUrlPage extends React.Component<INewUrlPageProps, any> {
 
 const withData = graphql(ADD_NEW_URL_MUTATION, {
   props: ({ mutate }) => ({
-    add: (repoFullName) =>
+    add: (url, description) =>
       mutate({
-        variables: { repoFullName },
+        variables: { url, description },
       }),
   }),
 });

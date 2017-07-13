@@ -40,6 +40,7 @@ type User {
 
 const resolvers = {
   Mutation: {
+    ...linkResolvers.Mutation,
     ...userResolvers.Mutation
   },
   Query: {
